@@ -15,6 +15,7 @@
 // --------------------------------------------------------------
 #include <bluefruit.h>
 
+
 #undef min // vaya tela, están definidos en bluefruit.h y  !
 #undef max // colisionan con los de la biblioteca estándar
 
@@ -96,6 +97,8 @@ void setup() {
 } // setup ()
 
 // --------------------------------------------------------------
+//                lucecitas()
+//        Encender y pagar LED del micro
 // --------------------------------------------------------------
 inline void lucecitas() {
   using namespace Globales;
@@ -137,21 +140,31 @@ void loop () {
   // mido y publico
   // 
   int valorCO2 = elMedidor.medirCO2();
+  valorCO2 = valorCO2 *10;
   
-  elPublicador.publicarCO2( valorCO2,
+  /*elPublicador.publicarCO2( valorCO2,
 							cont,
 							1000 // intervalo de emisión
-							);
+							);*/
   
   // 
   // mido y publico
   // 
   int valorTemperatura = elMedidor.medirTemperatura();
+  valorTemperatura = valorTemperatura * 10;  
   
-  elPublicador.publicarTemperatura( valorTemperatura, 
-									cont,
-									1000 // intervalo de emisión
-									);
+  /*elPublicador.publicarTemperatura( valorTemperatura, 
+							cont,
+							1000 // intervalo de emisión
+							);*/
+
+  // 
+  // mido y publico
+  // 
+  elPublicador.publicarCoXTemp(valorCO2,valorTemperatura,500);
+  Serial.println(valorCO2);
+  Serial.println(valorTemperatura);
+
 
   // 
   // prueba para emitir un iBeacon y poner
@@ -170,9 +183,9 @@ void loop () {
   };
 
   // elPublicador.laEmisora.emitirAnuncioIBeaconLibre ( &datos[0], 21 );
-  elPublicador.laEmisora.emitirAnuncioIBeaconLibre ( "MolaMolaMolaMolaMolaM", 21 );
+  //elPublicador.laEmisora.emitirAnuncioIBeaconLibre ( "MolaMolaMolaMolaMolaM", 21 );
 
-  esperar( 2000 );
+  esperar( 500 );
 
   elPublicador.laEmisora.detenerAnuncio();
   

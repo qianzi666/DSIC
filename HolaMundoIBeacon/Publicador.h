@@ -16,15 +16,15 @@ class Publicador {
 private:
 
   uint8_t beaconUUID[16] = { 
-	'E', 'P', 'S', 'G', '-', 'G', 'T', 'I', 
-	'-', 'P', 'R', 'O', 'Y', '-', '3', 'A'
+	'P', 'E', 'R', '-', 'P', 'U', 'I', 'G', 
+	'D', 'E', 'M', 'O', 'O', 'O', 'N', 'T'
 	};
 
   // ............................................................
   // ............................................................
 public:
   EmisoraBLE laEmisora {
-	"GTI-3A", //  nombre emisora
+	"PER PUIGDEMOOONT", //  nombre emisora
 	  0x004c, // fabricanteID (Apple)
 	  4 // txPower
 	  };
@@ -46,8 +46,7 @@ public:
   // ............................................................
   // ............................................................
   Publicador( ) {
-	// ATENCION: no hacerlo aquí. 
-	(*this).laEmisora.encenderEmisora();
+	// ATENCION: no hacerlo aquí. (*this).laEmisora.encenderEmisora();
 	// Pondremos un método para llamarlo desde el setup() más tarde
   } // ()
 
@@ -72,7 +71,7 @@ public:
 											(*this).RSSI // rssi
 									);
 
-	
+	/*
 	Globales::elPuerto.escribir( "   publicarCO2(): valor=" );
 	Globales::elPuerto.escribir( valorCO2 );
 	Globales::elPuerto.escribir( "   contador=" );
@@ -80,7 +79,7 @@ public:
 	Globales::elPuerto.escribir( "   todo="  );
 	Globales::elPuerto.escribir( major );
 	Globales::elPuerto.escribir( "\n" );
-	
+	*/
 
 	//
 	// 2. esperamos el tiempo que nos digan
@@ -109,7 +108,24 @@ public:
 	(*this).laEmisora.detenerAnuncio();
   } // ()
 	
+
+
+  void publicarCoXTemp(int16_t valorCox, int16_t valorTemperatura,long tiempoEspera)
+  {
+  (*this).laEmisora.emitirAnuncioIBeacon( (*this).beaconUUID, 
+											valorCox,
+											valorTemperatura, // minor
+											(*this).RSSI // rssi
+									);
+	esperar( tiempoEspera );
+
+	(*this).laEmisora.detenerAnuncio();
+  }
+
 }; // class
+
+
+
 
 // --------------------------------------------------------------
 // --------------------------------------------------------------
