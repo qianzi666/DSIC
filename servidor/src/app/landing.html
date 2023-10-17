@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyecto_3a</title>
+</head>
+<body>
+    <div id="resultado">El valor se mostrará aquí.</div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+
+        $(document).ready(function() {
+
+            // Hacer la solicitud al servidor
+            $.ajax({
+                url: '../api/fetchprueba.php', // Ruta al script PHP
+                type: 'GET',
+                dataType: 'json',
+                success: function(data) {
+                    // Manejar la respuesta del servidor
+                    console.log(data)
+                    var valor = data.co2
+                    var valor2 = data.temp
+                    document.getElementById('resultado').innerHTML = 'El valor es: ' + valor +""+valor2;
+                },
+                error: function() {
+                    console.log('Error al obtener el valor.');
+                    console.log(arguments);
+                }
+            });
+        });
+    </script>
+
+    
+</body>
+</html>
