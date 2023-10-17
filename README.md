@@ -40,4 +40,3 @@ Enlaces de Referencia
 Enlaces del Proyecto
 [Otros enlaces útiles relacionados con el proyecto]
 
-Esta es la traducción del borrador del archivo README al español. Por favor, asegúrate de reemplazar el texto entre corchetes con la información específica de tu proyecto. También puedes agregar capturas de pantalla u otros ejemplos para mejorar la legibilidad del documento.
