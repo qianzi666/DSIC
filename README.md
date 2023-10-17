@@ -20,7 +20,7 @@ Utiliza los botones en la aplicación móvil para escanear y mostrar dispositivo
 Utiliza los botones en la aplicación móvil para conectarte a un dispositivo Bluetooth específico.
 Una vez conectado al dispositivo Bluetooth, la aplicación móvil mostrará datos del sensor y los enviará a la base de datos en segundo plano.
 Guía de Contribución
-Si deseas contribuir al proyecto, sigue estos pasos:
+
 
 Presenta informes de errores o sugerencias en el repositorio de GitHub del proyecto.
 Si tienes código para solucionar problemas o agregar nuevas características, envía una solicitud de extracción.
